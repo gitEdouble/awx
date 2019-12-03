@@ -1,0 +1,44 @@
+docker tag ansible/awx_web:latest 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:awx_web
+docker tag ansible/awx_task:latest 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:awx_task
+docker tag ansible/awx_rabbitmq:3.7.4 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:awx_rabbitmq
+docker tag memcached:alpine 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:memcached
+docker tag postgres:9.6 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:postgres
+
+
+docker push 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:awx_web
+docker push 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:awx_task
+docker push 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:awx_rabbitmq
+docker push 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:memcached
+docker push 616381028659.dkr.ecr.us-east-1.amazonaws.com/awx:postgres
+
+
+ansible/awx_web
+ansible/awx_task
+ansible/awx_rabbitmq
+memcached
+postgres
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

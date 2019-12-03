@@ -1,6 +1,14 @@
-localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python"
+# localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python"
+# cluster1.doubletimedevelopment.com
+awx.doubletimedevelopment.com
 
 [all:vars]
+
+# ssh behavior variables
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/home/dsm1edm/Dropbox/LAB/ssh_keys/forAWXhost.pem
+# ansible_user=admin
+# ansible_ssh_private_key_file=/home/dsm1edm/.ssh/id_rsa
 
 # Remove these lines if you want to run a local image build
 # Otherwise the setup playbook will install the official Ansible images. Versions may
@@ -18,8 +26,8 @@ dockerhub_version=latest
 # openshift_pg_emptydir=True
 
 # Kubernetes Install
-# kubernetes_context=test-cluster
-# kubernetes_namespace=awx
+# kubernetes_context=cluster1.doubletimedevelopment.com
+# kubernetes_namespace=kube-public
 # tiller_namespace=kube-system
 
 # Kubernetes and Openshift Install Resource Requests
@@ -37,7 +45,7 @@ postgres_data_dir=/tmp/pgdocker
 host_port=80
 
 # Docker Compose Install
-# use_docker_compose=false
+use_docker_compose=false
 # The docker_compose.yml file will be created in this directory
 # The name of the directory (here "awx") will be the prefix of the docker containers
 docker_compose_dir=/var/lib/awx
@@ -49,20 +57,22 @@ docker_compose_dir=/var/lib/awx
 # Required for Docker Compose Install if building the image on your own
 # Optional for Docker Compose Install if using Dockerhub or another prebuilt registry
 # Define if you want the image pushed to a registry. The container definition will also use these images
-# docker_registry=172.30.1.1:5000
-# docker_registry_repository=awx
-# docker_registry_username=developer
+docker_registry=616381028659.dkr.ecr.us-east-1.amazonaws.com
+docker_registry_repository=awx
+#docker_registry_username=auth
 
 
 # Docker_image will not attempt to push to remote if the image already exists locally
 # Set this to true to delete images from docker on the build host so that they are pushed to the remote repository
-# docker_remove_local_images=False
+docker_remove_local_images=True
 
 # Set pg_hostname if you have an external postgres server, otherwise
 # a new postgres service will be created
-# pg_hostname=postgresql
-pg_username=awx
-pg_password=awxpass
+# pg_hostname=dts-rds01.c63cv4knhsvi.us-east-1.rds.amazonaws.com
+pg_hostname=rds-awx.c63cv4knhsvi.us-east-1.rds.amazonaws.com
+pg_username=sa
+# pg_password=pw4$au$er
+pg_password=YourPwdShouldBeLongAndSecure!
 pg_database=awx
 pg_port=5432
 
